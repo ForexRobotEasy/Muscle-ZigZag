@@ -1,0 +1,106 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                                      Muscle ZigZag |
+//|                                                 forexroboteasy.com |
+//|                                                Forex Robot Easy Team |
+//+------------------------------------------------------------------+
+#property copyright 'forexroboteasy.com'
+#property link      'https://www.forexroboteasy.com'
+#property version   '1.0'
+
+//+------------------------------------------------------------------+
+//| Include Files                                                     |
+//+------------------------------------------------------------------+
+#include <Trade\Trade.mqh>
+
+//+------------------------------------------------------------------+
+//| Global Variables                                                  |
+//+------------------------------------------------------------------+
+double ZigZagBuffer[];
+double MovingAverageBuffer[];
+
+//+------------------------------------------------------------------+
+//| Muscle ZigZag Initialization                                      |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+   // Initialize ZigZag indicator
+   IndicatorSetInteger(INDICATOR_DIGITS,_Digits);
+   IndicatorSetString(INDICATOR_SHORTNAME,'Muscle ZigZag');
+
+   // Initialize Moving Average lines
+   int movingAveragePeriod = 10;
+   ArrayResize(MovingAverageBuffer, Bars - movingAveragePeriod + 1);
+
+   return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Muscle ZigZag Deinitialization                                    |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+   // Cleanup ZigZag buffer
+   ArrayResize(ZigZagBuffer, 0);
+   ArrayResize(MovingAverageBuffer, 0);
+}
+
+//+------------------------------------------------------------------+
+//| Muscle ZigZag Start                                                |
+//+------------------------------------------------------------------+
+int OnStart()
+{
+   // Calculate ZigZag and Moving Average
+   CalcZigZag();
+   CalcMovingAverage();
+
+   // Generate trading signals
+   GenerateTradingSignals();
+
+   // Execute trades based on trading signals
+   ExecuteTrades();
+
+   return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Calculate ZigZag                                                  |
+//+------------------------------------------------------------------+
+void CalcZigZag()
+{
+   // Implement ZigZag calculation logic here
+   // Store ZigZag values in ZigZagBuffer
+}
+
+//+------------------------------------------------------------------+
+//| Calculate Moving Average                                          |
+//+------------------------------------------------------------------+
+void CalcMovingAverage()
+{
+   // Implement Moving Average calculation logic here
+   // Store Moving Average values in MovingAverageBuffer
+}
+
+//+------------------------------------------------------------------+
+//| Generate Trading Signals                                          |
+//+------------------------------------------------------------------+
+void GenerateTradingSignals()
+{
+   // Implement trading signal generation logic here
+}
+
+//+------------------------------------------------------------------+
+//| Execute Trades                                                    |
+//+------------------------------------------------------------------+
+void ExecuteTrades()
+{
+   // Implement trade execution logic here
+}
+
+//+------------------------------------------------------------------+
+//| Main Entry Point                                                  |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+   // Implement main entry point logic here
+}
